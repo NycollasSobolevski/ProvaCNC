@@ -1,9 +1,54 @@
+using Microsoft.EntityFrameworkCore;
+using Security_jwt;
+using webapi.Core.Context;
+using webapi.Core.Map;
+using webapi.Core.Service;
+using webapi.Domain.Model;
+using webapi.Domain.Service;
+
+DotNetEnv.Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers();
+
+builder.Services.AddDbContext<CnctestContext>( options => options.UseSqlServer(), ServiceLifetime.Scoped );
+
+builder.Services.AddTransient<UserRepository>();
+builder.Services.AddTransient<IService<User>, UserService>();
+builder.Services.AddTransient<IService<Test>, TestService>();
+builder.Services.AddTransient<IService<Answer>, AnswerService>();
+
+
+builder.Services.AddTransient<IJwtService>( p => 
+    new JwTService(new PasswordProvider
+    (
+        Environment.GetEnvironmentVariable("JWT_PASSWORD_PROVIDER")
+    ))
+);
+
+builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(name: "MainPolicy",
+            policy =>
+            {
+                policy
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod();
+            }
+        );
+    }
+);
+
+
+
+
 
 var app = builder.Build();
 
@@ -16,29 +61,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseAuthorization();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapControllers();
+
+app.UseCors();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
