@@ -1,4 +1,4 @@
-$strconn = "Data Source=" +"CA-C-0064X\SQLEXPRESS" + ";Initial Catalog=" + "CNCTest" + ";Integrated Security=True;TrustServerCertificate=true"
+$strconn = "Data Source=" +"CT-C-001YH\SQLEXPRESS" + ";Initial Catalog=" + "CNCTest" + ";Integrated Security=True;TrustServerCertificate=true"
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet tool install --global dotnet-ef

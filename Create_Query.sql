@@ -1,3 +1,6 @@
+create database CNCTest
+GO
+
 USE CNCTest
 
 GO
@@ -29,6 +32,7 @@ CREATE TABLE [answers] (
     [student] varchar(255) not null,
     [answer] VARCHAR(MAX) not null,
     [attempts] int not null,
+    [time] TIME not null,
     [id_test] int not null FOREIGN KEY REFERENCES test(id),
     [is_active] bit not null,
 )

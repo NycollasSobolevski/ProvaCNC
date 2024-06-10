@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using webapi.Core.Repository;
 using webapi.Domain.Model;
 using webapi.Domain.Repository;
@@ -14,14 +15,24 @@ public class BaseService<T> : IService<T>
         this.repository = repository;
     }
 
-    public Task<T> CreateAsync(T obj)
+    public async virtual Task<T> CreateAsync(T obj)
     {
-        throw new NotImplementedException();
+        var entity = this.repository.Add(obj);
+        await this.repository.SaveAsync();
+        return entity;
     }
 
-    public Task DeleteAsync(int identification, string token)
+    public async virtual Task DeleteAsync(int identification, string token)
     {
-        throw new NotImplementedException();
+
+        var entity = await this.repository
+            .GetAllNoTracking()
+            .SingleOrDefaultAsync( ent => ent.Id == identification)
+                ?? throw new KeyNotFoundException();
+
+        this.repository.Remove(entity);
+        await this.repository.SaveAsync();
+        this.repository.Detach(entity);
     }
 
     public T Find(T obj)
@@ -29,18 +40,58 @@ public class BaseService<T> : IService<T>
         throw new NotImplementedException();
     }
 
-    public Task<GetAllReturn<T>> GetAllAsync(int page = 0, int limit = 10)
+    public async virtual Task<GetAllReturn<T>> GetAllAsync(int page = 0, int limit = 10)
     {
-        throw new NotImplementedException();
+        GetAllReturn<T> res;
+
+        var db = this.repository
+            .GetAllNoTracking()
+            .Where( t => t.IsActive );
+        
+        if(limit == 0){
+            res = new(){
+                Items = await db.ToListAsync(),
+            };
+            return res;
+        }
+
+        var items = db
+            .Skip(page * limit)
+            .Take( limit + 1 );
+
+        res = new(){
+            Items = await items.ToListAsync(),
+            Count = db.Count(),
+            Next = items.Count() > limit,
+            Pages = db.Count() / limit 
+        };
+
+        return res;
     }
 
-    public Task<T> GetAsync(int identification)
+    public async virtual Task<T> GetAsync(int identification)
     {
-        throw new NotImplementedException();
+        var entity = await this.repository
+            .GetAllNoTracking()
+            .SingleOrDefaultAsync(t => t.Id == identification)
+                ?? throw new KeyNotFoundException();
+
+        return entity;
     }
 
-    public Task<T> UpdateAsync(int identification, T obj)
+    public async virtual Task<T> UpdateAsync(int identification, T obj)
     {
-        throw new NotImplementedException();
+        var entity = await this.repository
+            .GetAllNoTracking()
+            .SingleOrDefaultAsync( t => t.Id == identification)
+                ?? throw new KeyNotFoundException();
+        
+        entity = obj;
+
+        this.repository.Update(entity);
+        await this.repository.SaveAsync();
+        this.repository.Detach(entity);
+
+        return entity;
     }
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Security_jwt;
 using webapi.Core.Context;
 using webapi.Core.Map;
+using webapi.Core.Repository;
 using webapi.Core.Service;
 using webapi.Domain.Model;
 using webapi.Domain.Service;
@@ -21,7 +22,12 @@ builder.Services.AddDbContext<CnctestContext>( options => options.UseSqlServer()
 
 builder.Services.AddTransient<UserRepository>();
 builder.Services.AddTransient<IService<User>, UserService>();
+builder.Services.AddTransient<IUserService, UserService>();
+
+builder.Services.AddTransient<TestRepository>();
 builder.Services.AddTransient<IService<Test>, TestService>();
+
+builder.Services.AddTransient<AnswerRepository>();
 builder.Services.AddTransient<IService<Answer>, AnswerService>();
 
 

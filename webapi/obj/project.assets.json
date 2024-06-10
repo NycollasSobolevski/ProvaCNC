@@ -8816,19 +8816,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\son5ct\\Desktop\\SMO\\ProvaCNC\\webapi\\webapi.csproj",
+      "projectUniqueName": "C:\\Users\\son5ct\\Desktop\\Projects\\ProvaCNC\\webapi\\webapi.csproj",
       "projectName": "webapi",
-      "projectPath": "C:\\Users\\son5ct\\Desktop\\SMO\\ProvaCNC\\webapi\\webapi.csproj",
+      "projectPath": "C:\\Users\\son5ct\\Desktop\\Projects\\ProvaCNC\\webapi\\webapi.csproj",
       "packagesPath": "C:\\Users\\son5ct\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\son5ct\\Desktop\\SMO\\ProvaCNC\\webapi\\obj\\",
+      "outputPath": "C:\\Users\\son5ct\\Desktop\\Projects\\ProvaCNC\\webapi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\son5ct\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\son5ct\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8841,6 +8843,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -8893,7 +8900,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.105/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

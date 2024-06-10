@@ -14,31 +14,31 @@ public class BaseRepository<T> : IRepository<T>
     public T Add(T obj)
             => table.Add(obj).Entity;
 
-        public void AddMany(IEnumerable<T> objects)
-            => table.AddRange(objects);
+    public void AddMany(IEnumerable<T> objects)
+        => table.AddRange(objects);
 
-        public IQueryable<T> Get()
-            => table;
+    public IQueryable<T> Get()
+        => table;
 
-        public IQueryable<T> GetAllNoTracking()
-            => table.AsNoTracking();
+    public IQueryable<T> GetAllNoTracking()
+        => table.AsNoTracking();
 
-        public void Remove(T obj)
-            => table.Remove(obj);
+    public void Remove(T obj)
+        => table.Remove(obj);
 
-        public void Save()
-            => context.SaveChanges();
+    public void Save()
+        => context.SaveChanges();
 
-        public Task SaveAsync()
-            => context.SaveChangesAsync();
+    public Task SaveAsync()
+        => context.SaveChangesAsync();
 
-        public void Update(T obj)
-            => context.Entry(obj).State = EntityState.Modified;
+    public void Update(T obj)
+        => context.Entry(obj).State = EntityState.Modified;
 
 
-        public void Detach(T obj)
-        {
-            context.Entry(obj).State = EntityState.Detached;
-        }
+    public void Detach(T obj)
+    {
+        context.Entry(obj).State = EntityState.Detached;
+    }
 
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CHCzRa8vs3cgQ+ZDE7q3iefHIE+GBNuIk9g/KdfSeASqtZORy4J6Teg8xjlEI7pv/bCA6U+zNiBbS4BIREAR2g==",
+  "dgSpecHash": "knJGL2y/Xms=",
   "success": true,
-  "projectFilePath": "C:\\Users\\son5ct\\Desktop\\SMO\\ProvaCNC\\webapi\\webapi.csproj",
+  "projectFilePath": "C:\\Users\\son5ct\\Desktop\\Projects\\ProvaCNC\\webapi\\webapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\son5ct\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\son5ct\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
