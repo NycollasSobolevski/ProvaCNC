@@ -1,0 +1,27 @@
+// @import "../../../theme.scss" ;
+
+
+button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: .5rem;
+    border-radius: 5px;
+
+    *{
+        font-family: 'bosch-bold';
+    }
+
+
+    img, .btn-icon-material {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    p{
+        background-color: transparent;
+    }
+    z-index: 3;
+} 
+

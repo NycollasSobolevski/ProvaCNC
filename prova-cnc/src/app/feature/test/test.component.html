@@ -1,0 +1,10 @@
+<app-header />
+
+<main>
+    <form class="modal" [formGroup]="form">
+        <h1>Prova CNC</h1>
+        <h3>Insira o código da prova</h3>
+        <input type="text" formControlName="code">
+        <app-button label="Enviar" (click)="this.toggleSend()" /> 
+    </form>
+</main>

@@ -1,0 +1,99 @@
+@import "../../../../theme.scss";
+
+
+$link-btn: transparent;
+$link-btn-label: $Bosch-Blue-45;
+$link-btn-icon-color-filter: $To-Black-Filter;
+$link-btn-label-hovered: $Bosch-Blue-60;
+$link-btn-icon-hovered-color-filter: $To-Bosch-Blue-50-Filter;
+$link-btn-icon-pressed-color-filter: $To-Bosch-Blue-40-Filter;
+$link-btn-label-pressed: $Bosch-Blue-40;
+$link-btn-label-disabled: $Bosch-Gray-80;
+$link-btn-icon-disabled-color-filter: $To-Bosch-Gray-80-Filter;
+
+
+.link {
+    background-color: $link-btn;
+    gap: 0;
+    p, .btn-icon-material{
+        background-color: transparent;
+        color: $link-btn-label;
+        font-weight: 600;
+    } 
+
+    img {
+        filter: $link-btn-icon-color-filter;
+    }
+    &:hover {
+        p, .btn-icon-material{
+            color: $link-btn-label-hovered;
+        }
+        img {
+            filter: $link-btn-icon-hovered-color-filter;
+        }
+    } 
+    &:active {
+        p, .btn-icon-material{
+            color: $link-btn-label-pressed;
+        }
+        img {
+            filter: $link-btn-icon-pressed-color-filter;
+        }
+    } 
+    &:disabled {
+        cursor: not-allowed;
+        p, .btn-icon-material{
+            color: $link-btn-label-disabled;
+        }
+        img {
+            filter: $link-btn-icon-disabled-color-filter;
+        }
+    }
+    
+    &.danger {
+        p, .btn-icon-material{
+            color: $danger-color;
+        }
+        &:hover {
+            p, .btn-icon-material{
+                color: $danger-color-hovered;
+            }
+        }
+        &:active {
+            p, .btn-icon-material{
+                color: $danger-color-actived;
+            }
+        }
+    }
+    &.warning {
+        p, .btn-icon-material{
+            color: $warning-color;
+        }
+        &:hover {
+            p, .btn-icon-material{
+                color: $warning-color-hovered;
+            }
+        }
+        &:active {
+            p, .btn-icon-material{
+                color: $warning-color-actived;
+            }
+        }
+    }
+    &.success {
+        p, .btn-icon-material{
+            color: $success-color;
+        }
+        &:hover {
+            p, .btn-icon-material{
+                color: $success-color-hovered;
+            }
+        }
+        &:active {
+            p, .btn-icon-material{
+                color: $success-color-actived;
+            }
+        }
+    }
+
+}

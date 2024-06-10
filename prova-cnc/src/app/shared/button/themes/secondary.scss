@@ -1,0 +1,96 @@
+@import "../../../../theme.scss";
+
+$secondary-btn: $Bosch-White;
+$secondary-btn-border: $Bosch-Blue-50;
+$secondary-btn-label: $Bosch-Blue-50;
+$secondary-btn-icon-color-filter: $To-Bosch-Blue-50-Filter;
+$secondary-btn-hovered: $Bosch-Blue-90;
+$secondary-btn-border-hovered: $Bosch-Blue-40;
+$secondary-btn-label-hovered: $Bosch-Blue-40;
+$secondary-btn-icon-hovered-color-filter: $To-Bosch-Blue-40-Filter;
+$secondary-btn-pressed-border: $Bosch-Blue-30;
+$secondary-btn-pressed: $Bosch-Blue-80;
+$secondary-btn-icon-pressed-color-filter: $To-Bosch-Blue-30-Filter;
+$secondary-btn-label-pressed: $Bosch-Blue-30;
+$secondary-btn-disabled: $Bosch-Gray-90;
+$secondary-btn-label-disabled: $Bosch-Gray-80;
+$secondary-btn-border-disabled: $Bosch-Gray-80;
+$secondary-btn-icon-disabled-color-filter: $To-Bosch-Gray-80-Filter;
+
+
+.secondary {
+    background-color: $secondary-btn;
+    border: 2px solid $secondary-btn-border;
+    padding: calc(1rem - 2px);
+    p, .btn-icon-material{
+        background-color: transparent;
+        color: $secondary-btn-label;
+    } 
+    img {
+        filter: $secondary-btn-icon-color-filter;
+    }
+    &:hover {
+        background-color: $secondary-btn-hovered;
+        border: 2px solid $secondary-btn-border-hovered;
+        p, .btn-icon-material{
+            color: $secondary-btn-label-hovered;
+        }
+        img {
+            filter: $secondary-btn-icon-hovered-color-filter;
+        }
+    } 
+    &:active {
+        background-color: $secondary-btn-pressed;
+    } 
+    &:disabled {
+        border: 2px solid $secondary-btn-border-disabled;
+        background-color: $secondary-btn-disabled;
+        cursor: not-allowed;
+        p, .btn-icon-material{
+            color: $secondary-btn-label-disabled;
+        }
+        img {
+            filter: $secondary-btn-icon-disabled-color-filter;
+        }
+    }
+
+    &.danger{
+        border: 2px solid $danger-color;
+        p, .btn-icon-material{
+            background-color: transparent;
+            color: $danger-color;
+        } 
+        &:hover {
+            background-color: $danger-color-hovered;
+        } 
+        &:active {
+            background-color: $danger-color-actived;
+        } 
+    }
+    &.warning{
+        border: 2px solid $warning-color;
+        p, .btn-icon-material{
+            background-color: transparent;
+            color: $warning-color;
+        } 
+        &:hover {
+            background-color: $warning-color-hovered;
+        } 
+        &:active {
+            background-color: $warning-color-actived;
+        } 
+    }
+    &.success{
+        border: 2px solid $success-color;
+        p, .btn-icon-material{
+            background-color: transparent;
+            color: $success-color;
+        } 
+        &:hover {
+            background-color: $success-color-hovered;
+        } 
+        &:active {
+            background-color: $success-color-actived;
+        } 
+    }
+} 

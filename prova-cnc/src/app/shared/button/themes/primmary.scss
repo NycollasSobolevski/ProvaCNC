@@ -1,0 +1,67 @@
+@import "../../../../theme";
+
+
+$primmary-btn: $Bosch-Blue-50;
+$primmary-btn-hovered: $Bosch-Blue-40;
+$primmary-btn-pressed: $Bosch-Blue-30;
+$primmary-btn-disabled: $Bosch-Gray-70;
+$primmary-btn-label: $Bosch-Gray-95;
+$primmary-btn-label-disabled: $Bosch-Gray-55;
+$primmary-btn-icon-color-filter: $To-Bosch-Gray-95-Filter;
+$primmary-btn-icon-disabled-color-filter: $To-Bosch-Gray-55-Filter;
+
+
+.primary {
+    background-color: $primmary-btn;
+
+    img {
+        filter: $svg-icon-filter
+    }
+    p, .btn-icon-material{
+        color: $primmary-btn-label;
+    }
+    &:hover {
+        background-color: $primmary-btn-hovered;
+    } 
+    &:active {
+        background-color: $primmary-btn-pressed;
+    } 
+    &:disabled {
+        background-color: $primmary-btn-disabled;
+        cursor: not-allowed;
+        p{
+            color: $primmary-btn-label-disabled;
+        }
+        img {
+            filter: $primmary-btn-icon-disabled-color-filter;
+        }
+    }
+
+    &.danger{
+        background-color: $danger-color;
+        &:hover {
+            background-color: $danger-color-hovered;
+        } 
+        &:active {
+            background-color: $danger-color-actived;
+        } 
+    }
+    &.warning{
+        background-color: $warning-color;
+        &:hover {
+            background-color: $warning-color-hovered;
+        } 
+        &:active {
+            background-color: $warning-color-actived;
+        } 
+    }
+    &.success{
+        background-color: $success-color;
+        &:hover {
+            background-color: $success-color-hovered;
+        } 
+        &:active {
+            background-color: $success-color-actived;
+        } 
+    }
+}

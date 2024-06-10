@@ -1,0 +1,116 @@
+
+$Bosch-White : #fff;
+$Bosch-Black : #000;
+
+$Bosch-Gray-95: #EFF1F2;
+$Bosch-Gray-90: #E0E2E5;
+$Bosch-Gray-85: #D0D4D8;
+$Bosch-Gray-80: #C1C7CC;
+$Bosch-Gray-75: #B2B9C0;
+$Bosch-Gray-70: #A4ABB3;
+$Bosch-Gray-65: #979EA4;
+$Bosch-Gray-60: #8A9097;
+$Bosch-Gray-55: #7D8389;
+$Bosch-Gray-50: #71767C;
+$Bosch-Gray-45: #656A6F;
+$Bosch-Gray-40: #595E62;
+$Bosch-Gray-35: #4E5256;
+$Bosch-Gray-30: #43464A;
+$Bosch-Gray-25: #383B3E;
+$Bosch-Gray-20: #2E3033;
+$Bosch-Gray-15: #232628;
+$Bosch-Gray-10: #1A1C1D;
+
+$Bosch-Blue-95: #E8F1FF;
+$Bosch-Blue-90: #D1E4FF;
+$Bosch-Blue-85: #B8D6FF;
+$Bosch-Blue-80: #9DC9FF;
+$Bosch-Blue-75: #7EBDFF;
+$Bosch-Blue-70: #56B0FF;
+$Bosch-Blue-65: #00A4FD;
+$Bosch-Blue-60: #0096E8;
+$Bosch-Blue-55: #0088D4;
+$Bosch-Blue-50: #007BC0;
+$Bosch-Blue-45: #006EAD;
+$Bosch-Blue-40: #00629A;
+$Bosch-Blue-35: #005587;
+$Bosch-Blue-30: #004975;
+$Bosch-Blue-25: #003E64;
+$Bosch-Blue-20: #003253;
+$Bosch-Blue-15: #002742;
+$Bosch-Blue-10: #001D33;
+$Bosch-Blue-05: #001222;
+
+
+$Bosch-Green-95: #E2F5E7;
+$Bosch-Green-90: #B8EFC9;
+$Bosch-Green-85: #9BE4B3;
+$Bosch-Green-80: #86D7A2;
+$Bosch-Green-75: #72CA92;
+$Bosch-Green-70: #5EBD82;
+$Bosch-Green-65: #4AB073;
+$Bosch-Green-60: #37A264;
+$Bosch-Green-55: #219557;
+$Bosch-Green-50: #00884A;
+$Bosch-Green-45: #007A42;
+$Bosch-Green-40: #006C3A;
+$Bosch-Green-35: #005F32;
+$Bosch-Green-30: #00512A;
+$Bosch-Green-25: #004523;
+$Bosch-Green-20: #00381B;
+$Bosch-Green-15: #002C14;
+$Bosch-Green-10: #00210E;
+$Bosch-Green-05: #001507;
+
+$Bosch-Yellow-95: #FFEFD1;
+$Bosch-Yellow-90: #FFDF95;
+$Bosch-Yellow-85: #FFCF00;
+$Bosch-Yellow-80: #EEC100;
+$Bosch-Yellow-75: #DEB300;
+$Bosch-Yellow-70: #CDA600;
+$Bosch-Yellow-65: #BD9900;
+$Bosch-Yellow-60: #AD8C00;
+$Bosch-Yellow-55: #9E7F00;
+$Bosch-Yellow-50: #8F7300;
+$Bosch-Yellow-45: #806700;
+$Bosch-Yellow-40: #725B00;
+$Bosch-Yellow-35: #644F00;
+$Bosch-Yellow-30: #564400;
+$Bosch-Yellow-25: #493900;
+$Bosch-Yellow-20: #3C2E00;
+$Bosch-Yellow-15: #2F2400;
+$Bosch-Yellow-10: #231A00;
+$Bosch-Yellow-05: #171000;
+
+$Bosch-Red-95: #FFECEC;
+$Bosch-Red-90: #FFD9D9;
+$Bosch-Red-85: #FFC6C6;
+$Bosch-Red-80: #FFB2B2;
+$Bosch-Red-75: #FF9D9D;
+$Bosch-Red-70: #FF8787;
+$Bosch-Red-65: #FF6E6F;
+$Bosch-Red-60: #FF5152;
+$Bosch-Red-55: #FF2124;
+$Bosch-Red-50: #ED0007;
+$Bosch-Red-45: #D50005;
+$Bosch-Red-40: #BE0004;
+$Bosch-Red-35: #A80003;
+$Bosch-Red-30: #920002;
+$Bosch-Red-25: #7D0002;
+$Bosch-Red-20: #680001;
+$Bosch-Red-15: #540001;
+$Bosch-Red-10: #410000;
+$Bosch-Red-05: #2D0000;
+
+
+
+
+$to-white-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(50deg) brightness(104%) contrast(103%);
+$To-Black-Filter: invert(0%) sepia(91%) saturate(7464%) hue-rotate(61deg) brightness(88%) contrast(101%);
+$To-Bosch-Gray-95-Filter: invert(100%) sepia(1%) saturate(4651%) hue-rotate(61deg) brightness(111%) contrast(89%);
+$To-Bosch-Gray-80-Filter: invert(79%) sepia(29%) saturate(0%) hue-rotate(298deg) brightness(97%) contrast(91%);
+$To-Bosch-Gray-55-Filter: invert(55%) sepia(2%) saturate(999%) hue-rotate(169deg) brightness(93%) contrast(98%);
+$To-Bosch-Blue-50-Filter: invert(31%) sepia(48%) saturate(2469%) hue-rotate(178deg) brightness(97%) contrast(101%);
+$To-Bosch-Blue-40-Filter: invert(23%) sepia(92%) saturate(5198%) hue-rotate(188deg) brightness(84%) contrast(103%);
+$To-Bosch-Blue-30-Filter: invert(12%) sepia(54%) saturate(5168%) hue-rotate(188deg) brightness(104%) contrast(102%);
+

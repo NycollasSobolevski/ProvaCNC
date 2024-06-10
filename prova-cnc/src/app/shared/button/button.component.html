@@ -1,0 +1,23 @@
+<button
+    (click)="submit()"
+    [class]="'btn ' + variant + ' ' + type"
+    [disabled]="disabled"
+>
+    @if (iconPath && iconPosition == "left") {
+        <img [src]="iconPath" alt="btn-icon" class="btn-icon">
+    }
+    @if (icon && iconPosition == "left") {
+        <mat-icon class="btn-icon-material" >{{icon}}</mat-icon>
+    }
+    @if (this.label) {
+        <p>
+            {{ label }}
+        </p>
+    }
+    @if (iconPath && iconPosition == "right") {
+        <img [src]="iconPath" alt="btn-icon" class="btn-icon">
+    }
+    @if (icon && iconPosition == "right") {
+        <mat-icon class="btn-icon-material" >{{icon}}</mat-icon>
+    }
+</button>
