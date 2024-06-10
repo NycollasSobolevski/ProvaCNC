@@ -17,13 +17,13 @@ CREATE TABLE [user](
 GO
 CREATE TABLE [test](
     [id] INT IDENTITY(1,1) PRIMARY KEY,
-    [code] VARCHAR(25) NOT NULL,
+    [code] VARCHAR(25) NOT NULL UNIQUE,
     [title] VARCHAR(255) not null,
     [description] VARCHAR(255), 
     [attempts] int not null,
     [question] VARCHAR(MAX) not null,
     [answer] VARCHAR(MAX) not null,
-    [is_active] bit not null,
+    [is_active] bit not null
 )
 
 GO

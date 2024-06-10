@@ -1,0 +1,63 @@
+@import './theme/bosch-color-theme.scss';
+
+
+
+$svg-icon-filter: $to-white-filter;
+
+$background-color : #000;
+$dark-background : $Bosch-Gray-20;
+$white-background : $Bosch-Gray-95;
+$blue-background : $Bosch-Blue-65 ;
+$tooltip-table-background : $Bosch-White;
+
+//Notifications
+$notification-unreaded-container: $Bosch-Blue-90;
+$notification-unreaded-hovered-container: $Bosch-Blue-85;
+$notification-hovered-container: $Bosch-Blue-90;
+
+$divider-row: $Bosch-Gray-50 ;
+
+$modal-background : $white-background;
+$modal-background-hovered : $Bosch-Gray-85;
+
+$input-default-color: $Bosch-Gray-90;
+$input-hovered-color: $Bosch-Gray-80;
+$input-focused-color: $Bosch-Blue-90;
+$input-disabled-color: $Bosch-Gray-90;
+$input-default-border: $Bosch-Gray-20;
+$input-disabled-border: $Bosch-Gray-70;
+
+$danger-color: $Bosch-Red-50;
+$warning-color: $Bosch-Yellow-50;
+$success-color: $Bosch-Green-50;
+$danger-color-hovered: $Bosch-Red-65;
+$warning-color-hovered: $Bosch-Yellow-65;
+$success-color-hovered: $Bosch-Green-65;
+$danger-color-actived: $Bosch-Red-40;
+$warning-color-actived: $Bosch-Yellow-20;
+$success-color-actived: $Bosch-Green-20;
+
+
+$section-background-color: $Bosch-Gray-85;
+$input-label-font-size: .75rem;
+$input-font-size: medium;
+
+$default-border-color: $Bosch-Gray-50;
+
+$default-scrollbar-color: $Bosch-Gray-35;
+
+$border-table-row-color: $Bosch-Gray-70;
+$border-table-row-color-hovered: $Bosch-Gray-90;
+$border-table-header-color: $Bosch-Gray-30;
+
+$select-option-hover-color: $Bosch-Blue-50;
+
+$input-checked: $Bosch-Blue-75;
+$input-not-checked: $Bosch-Gray-80;
+
+// responsive means
+$small-mobile-width: 500px;
+$mobile-width: 750px;
+$tablet-width: 900px;
+$small-desktop-width: 1600px;
+$desktop-width: 2000px ;

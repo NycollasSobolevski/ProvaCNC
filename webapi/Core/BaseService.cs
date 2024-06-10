@@ -17,8 +17,10 @@ public class BaseService<T> : IService<T>
 
     public async virtual Task<T> CreateAsync(T obj)
     {
+        System.Console.WriteLine(obj.IsActive);
         var entity = this.repository.Add(obj);
         await this.repository.SaveAsync();
+        this.repository.Detach(entity);
         return entity;
     }
 

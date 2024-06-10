@@ -26,6 +26,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 
 builder.Services.AddTransient<TestRepository>();
 builder.Services.AddTransient<IService<Test>, TestService>();
+builder.Services.AddTransient<ITestService, TestService>();
 
 builder.Services.AddTransient<AnswerRepository>();
 builder.Services.AddTransient<IService<Answer>, AnswerService>();

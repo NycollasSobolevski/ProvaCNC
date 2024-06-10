@@ -1,0 +1,75 @@
+@import "../../../../theme.scss";
+
+
+$tertiary-btn: transparent;
+$tertiary-btn-label: $Bosch-Blue-50;
+$tertiary-btn-icon-color-filter: $To-Bosch-Blue-50-Filter;
+$tertiary-btn-hovered: $Bosch-Blue-90;
+$tertiary-btn-label-hovered: $Bosch-Blue-40;
+$tertiary-btn-icon-hovered-color-filter: $To-Bosch-Blue-40-Filter;
+$tertiary-btn-pressed: $Bosch-Blue-80;
+$tertiary-btn-icon-pressed-color-filter: $To-Bosch-Blue-30-Filter;
+$tertiary-btn-label-pressed: $Bosch-Blue-30;
+$tertiary-btn-disabled: $Bosch-Gray-90;
+$tertiary-btn-label-disabled: $Bosch-Gray-80;
+$tertiary-btn-icon-disabled-color-filter: $To-Bosch-Gray-80-Filter;
+
+
+
+.tertiary {
+    background-color: $tertiary-btn;
+    p, .btn-icon-material{
+        background-color: transparent;
+        color: $tertiary-btn-label;
+    } 
+    img {
+        filter: $tertiary-btn-icon-color-filter;
+    }
+    &:hover {
+        background-color: $tertiary-btn-hovered;
+        p{
+            color: $tertiary-btn-label-hovered;
+        }
+        img {
+            filter: $tertiary-btn-icon-hovered-color-filter;
+        }
+    } 
+    &:active {
+        background-color: $tertiary-btn-pressed;
+    } 
+    &:disabled {
+        background-color: $tertiary-btn-disabled;
+        cursor: not-allowed;
+        p{
+            color: $tertiary-btn-label-disabled;
+        }
+        img {
+            filter: $tertiary-btn-icon-disabled-color-filter;
+        }
+    }
+
+    &.danger{
+        p, .btn-icon-material{
+            color: $danger-color;
+        } 
+        &:hover{
+            background-color: $danger-color-hovered;
+        }
+    }
+    &.warning{
+        p, .btn-icon-material{
+            color: $warning-color;
+        } 
+        &:hover{
+            background-color: $warning-color-hovered;
+        }
+    }
+    &.success{
+        p, .btn-icon-material{
+            color: $success-color;
+        } 
+        &:hover{
+            background-color: $success-color-hovered;
+        }
+    }
+}

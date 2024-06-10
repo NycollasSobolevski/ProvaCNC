@@ -1,0 +1,21 @@
+@import "../../../theme/header.theme.scss";
+
+header {
+    width: 100%;
+    height: 3.5rem;
+    background-color: $header-background;
+    display: flex;
+    padding: 0 1.5rem 0 0rem;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        max-height: 2.8rem ;
+    }
+
+    a {
+        text-decoration: none;
+        font-family: 'bosch-bold';
+        color: $Bosch-Gray-25;
+    }
+}
