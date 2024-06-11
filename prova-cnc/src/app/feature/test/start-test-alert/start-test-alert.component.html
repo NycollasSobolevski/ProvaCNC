@@ -1,1 +1,14 @@
-<p>start-test-alert works!</p>
+<div class="modal">
+    <h2>Iniciar Prova</h2>
+    <br>
+    <h4>A partir do momento que passar desta tela, a prova irá iniciar e a quantidade de tentativas 
+        passará a contar.</h4>
+    
+    <br>
+    <h5>OBSERVAÇÃO: depois de iniciado a prova, a janela da prova não pode ser fechada, se fechada, terá de iniciar uma nova prova. </h5>
+    <br>
+    <div class="btn-area">
+        <app-button  label="Voltar" variant="secondary" (click)="diagRef.close()" /> 
+        <app-button  label="Iniciar Prova" (click)="startTest()" /> 
+    </div>
+</div>

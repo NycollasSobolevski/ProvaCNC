@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+type variant = "default" | 'user' | 'test'
 
 @Component({
   selector: 'app-header',
@@ -9,4 +11,19 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  @Input()
+  variant: variant = 'default';
+
+
+  // variables for test variant
+  @Input()
+  testName? : string
+  @Input()
+  testTime? : string
+  @Input()
+  testCode? : string
+  
+  // variables for user variant
+  @Input()
+  username? : string
 }

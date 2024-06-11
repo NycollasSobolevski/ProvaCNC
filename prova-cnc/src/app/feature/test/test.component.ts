@@ -28,6 +28,8 @@ export class TestComponent {
   })
 
   ngOnInit() {
+    this.form.controls['code'].setValue("123123")
+    this.toggleSend()
   }
 
   toggleSend () {
