@@ -1,10 +1,36 @@
-<header>
-    <span>
+<header [className]="variant">
+  @switch(variant){
+    @case('default') {
+      <span>
         <img src="../../../assets/Bosch_symbol_logo_black_red.svg" alt="bosch-logo" width="200">
-    </span>
-
-
-    <span>
+      </span>
+      <span>
         <a href="login">LOGIN</a>
-    </span>
+      </span>
+    }
+
+    @case('user') {
+      <span>
+        <img src="../../../assets/Bosch_symbol_logo_black_red.svg" alt="bosch-logo" width="200">
+      </span>
+      <span>
+        <h3>{{username}}</h3>
+      </span>
+    }
+
+    @case('test') {
+      <span>
+        <h3>{{testName}}</h3>
+      </span>
+      <span>
+        <h3>Código: </h3>
+        <h3>{{testCode}}</h3>
+      </span>
+      <span>
+        <h3>{{testTime}}</h3>
+      </span>
+    }
+
+
+  }
 </header>

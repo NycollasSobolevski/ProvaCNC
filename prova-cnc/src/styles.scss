@@ -47,6 +47,13 @@ input {
         background-color: $Bosch-Blue-95;
     }
 }
+
+.btn-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 .dialog {
     position: fixed;
 }
@@ -58,9 +65,13 @@ input {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $Bosch-Gray-50;
+    background-color: $Bosch-Gray-90;
     padding: 1rem;
     border-radius: 15px;
+
+    * {
+        color:  $Bosch-Gray-10;
+    }
 }
 
 html, body { height: 100%; width: 100%; }

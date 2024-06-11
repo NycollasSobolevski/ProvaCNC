@@ -4,21 +4,22 @@ import Test from '@domain/test/test.model';
 import { ButtonComponent } from '@shared/button/button.component';
 import { StartTestAlertComponent } from '../start-test-alert/start-test-alert.component';
 import Answer from '@domain/answer/answer.model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test-detail',
   standalone: true,
   imports: [
-    ButtonComponent
+    ButtonComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './test-detail.component.html',
   styleUrl: './test-detail.component.scss'
 })
 export class TestDetailComponent {
   constructor(
-    private diagRef : MatDialogRef<TestDetailComponent>,
-    private dialog  : MatDialog
+    protected diagRef : MatDialogRef<TestDetailComponent>,
+    protected dialog  : MatDialog
   ){}
 
   @Input()
@@ -28,13 +29,19 @@ export class TestDetailComponent {
     username: new FormControl("", Validators.required)
   })
 
-  toggleStart () {
-    if(!this.answerForm.valid) {
-      return;
-    }
+  ngOnInit() {
+    this.toggleStart()
+  }
 
+  toggleStart () {
+    // if(!this.answerForm.valid) {
+    //   return;
+    //   }
+
+    const username = this.answerForm.controls['username'].setValue("nyc")
     const dialog = this.dialog.open(StartTestAlertComponent)
     dialog.componentInstance.answer = this.buildAnswer();
+    dialog.componentInstance.test = this.test;
   }
 
   buildAnswer() : Answer {
@@ -42,7 +49,7 @@ export class TestDetailComponent {
 
     let obj : Answer = {
       id: 0,
-      attempts: 0,
+      attempts: 1,
       idTest: this.test.id,
       is_activated: true,
       student: username,

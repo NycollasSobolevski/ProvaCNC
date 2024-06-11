@@ -1,0 +1,36 @@
+<app-header variant="test" [testName]="test.title" [testCode]="test.code" [testTime]="getTime()" />
+
+<main>
+  <div class="top">
+    <h3>{{answer.student}}</h3>
+    <div class="btn-area">
+      <h4>Tentativas: {{answer.attempts}} / {{test.attempts}}</h4>
+      <app-button label="Entregar" (click)="sendTest()"/>
+    </div>
+  </div>
+
+  <div class="test-description">
+    <p>{{test.description}}</p>
+  </div>
+
+  <div class="test">
+    @for(line of question; track line){
+      <div class="line">
+        <p class="list-index">{{getIndex(line, question, 1 )}}</p>
+        @for(item of line; track item){
+          @if(item != ""){
+            <input type="text"
+              [className]="getClass(getIndex(line, question), getIndex(item, line))"
+              [placeholder]="item"
+              value="{{item}}"
+              (input)="inputChanged($event,
+                getIndex(line, question),
+                getIndex(item, line))"
+            >
+          }
+        }
+        </div>
+      <hr>
+    }
+  </div>
+</main>

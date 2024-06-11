@@ -1,12 +1,12 @@
-<div class="modal">
+<form class="modal" [formGroup]="answerForm">
     <h3>{{test.title}}</h3>
     <h4>Código: {{test.code}}</h4>
 
     <h3>Aluno:</h3>
-    <input type="text" [autofocus]="true">
+    <input type="text" [autofocus]="true" formControlName="username" >
     
     <div class="btn-area">
-        <app-button label="Voltar" variant="secondary"/> 
-        <app-button label="Começar"/> 
+        <app-button label="Voltar" variant="secondary" (click)="diagRef.close()" /> 
+        <app-button label="Avançar" (click)="toggleStart()" /> 
     </div>
-</div>
+</form>

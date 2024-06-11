@@ -1,21 +1,65 @@
 @import "../../../theme/header.theme.scss";
 
 header {
+    z-index: 20;
     width: 100%;
-    height: 3.5rem;
+    height: 4.5rem;
     background-color: $header-background;
     display: flex;
     padding: 0 1.5rem 0 0rem;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 0 10px black ;
 
     img {
-        max-height: 2.8rem ;
+      max-height: 2.8rem ;
+      filter: grayscale(1) brightness(255);
+      cursor: pointer;
+
+      &:hover {
+        filter: none;
+
+      }
     }
 
     a {
-        text-decoration: none;
-        font-family: 'bosch-bold';
-        color: $Bosch-Gray-25;
+      text-decoration: none;
+      font-family: 'bosch-bold';
+      color: $Bosch-Gray-95;
     }
+
+    &:before {
+      position: absolute;
+      width: 100%;
+      height: .375rem;
+      top: 0rem;
+      left: 0;
+      background-image: url(http://ctp-ets.br.bosch.com/ScoreTrack/assets/Bosch-Supergraphic_RGB.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      content: "";
+  }
+}
+
+.test {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 33% 33% 33% ;
+  // grid-template-rows: auto;
+
+
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem ;
+
+    &:nth-child(3){
+      justify-content: end;
+      padding: 0 4rem ;
+    }
+  }
+
 }
