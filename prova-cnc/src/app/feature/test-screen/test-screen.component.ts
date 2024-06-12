@@ -1,6 +1,6 @@
-import { isNgTemplate } from '@angular/compiler';
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import TimeOnly from '@domain/_utils/timeonly.type';
 import Answer from '@domain/answer/answer.model';
@@ -9,6 +9,7 @@ import { AnswerCorrectionEnum, CorrectionLocation } from '@domain/answer/answerC
 import Test from '@domain/test/test.model';
 import { ButtonComponent } from '@shared/button/button.component';
 import { HeaderComponent } from '@shared/header/header.component';
+import { FinishTestPopupComponent } from './finish-test-popup/finish-test-popup.component';
 
 @Component({
   selector: 'app-test-screen',
@@ -24,7 +25,8 @@ import { HeaderComponent } from '@shared/header/header.component';
 export class TestScreenComponent {
   constructor(
     private router: Router,
-    private answerService : AnswerService
+    private answerService : AnswerService,
+    private dialog : MatDialog
   ){
     const navigation = this.router.getCurrentNavigation();
     this.answer = navigation?.extras.state!['answer'];
@@ -160,6 +162,26 @@ export class TestScreenComponent {
     return lines;
   }
 
+  toggleSend() {
+    const dialog = this.dialog.open(FinishTestPopupComponent)
+    dialog.componentInstance.title = "Tem certeza?"
+    if(this.test.attempts! > this.answer.attempts!) {
+      dialog.componentInstance.description =
+        `Você tem certeza que deseja encerrar esta tentativa? \nApós esta tentativa lhe restará mais ${this.test.attempts! - this.answer.attempts!} tentativa(s)`
+        }
+    else {
+      dialog.componentInstance.description =
+        `Você tem certeza que deseja encerrar esta tentativa? \n Esta é a ultima tentativa.`
+    }
+
+    dialog.afterClosed().subscribe( result =>  {
+
+      if(result === true) {
+        this.sendTest();
+      }
+    })
+  }
+
   sendTest(){
     this.answer.userAnswer = this.buildAnswer();
     this.answer.time = this.time.toString();
@@ -174,6 +196,7 @@ export class TestScreenComponent {
       }
     })
   }
+
 
   rebuildTest (answer : Answer) {
     this.answer = answer;
