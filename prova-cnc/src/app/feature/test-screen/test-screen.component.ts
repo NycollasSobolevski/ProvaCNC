@@ -2,7 +2,10 @@ import { isNgTemplate } from '@angular/compiler';
 import { Component, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import TimeOnly from '@domain/_utils/timeonly.type';
 import Answer from '@domain/answer/answer.model';
+import AnswerService from '@domain/answer/answer.service';
+import { AnswerCorrectionEnum, CorrectionLocation } from '@domain/answer/answerCorrection.model';
 import Test from '@domain/test/test.model';
 import { ButtonComponent } from '@shared/button/button.component';
 import { HeaderComponent } from '@shared/header/header.component';
@@ -19,21 +22,27 @@ import { HeaderComponent } from '@shared/header/header.component';
   styleUrl: './test-screen.component.scss'
 })
 export class TestScreenComponent {
-  constructor(private router: Router){
+  constructor(
+    private router: Router,
+    private answerService : AnswerService
+  ){
     const navigation = this.router.getCurrentNavigation();
     this.answer = navigation?.extras.state!['answer'];
     this.test   = navigation?.extras.state!['test'];
+    this.correction = navigation?.extras.state!['locations'];
     this.startTime();
   }
 
   test!: Test;
   answer! : Answer;
 
+  correction? : CorrectionLocation[]
+
   question! : string[][];
   questionCopy! : string[][];
 
   interval: any;
-  time: number = 0;
+  time: TimeOnly  = new TimeOnly;
 
 
   ngOnInit(){
@@ -67,6 +76,34 @@ export class TestScreenComponent {
   }
 
   getClass(x : number = 0, y : number = 0){
+    let className = ""
+
+    this.correction?.forEach(element => {
+      if(element.x == x && element.y == y) {
+        switch (element.value) {
+          case AnswerCorrectionEnum.Correct:
+            className =  "correct";
+            break;
+
+          case AnswerCorrectionEnum.Incorrect:
+            className =  "incorrect";
+            break;
+
+          case AnswerCorrectionEnum.MissPlaced:
+            className =  "missPlaced";
+            break;
+
+          default:
+            className =  "";
+            break;
+        }
+      }
+      return className;
+    });
+
+    if(className != "") {
+      return className;
+    }
 
     if(this.questionCopy[x][y] != this.question[x][y]){
       return "altered";
@@ -74,7 +111,6 @@ export class TestScreenComponent {
     return "";
 
   }
-
 
   startTime() {
     this.interval = setInterval(() => {
@@ -87,18 +123,18 @@ export class TestScreenComponent {
 
       let testTimeInSecconds = (currentDate.getTime() - this.answer.startDate!.getTime()) / 1000 ;
 
-      this.answer.time!.hour = Math.floor(testTimeInSecconds / 3600);
-      this.answer.time!.minute = Math.floor((testTimeInSecconds - (this.answer.time!.hour * 3600)) / 60);
-      this.answer.time!.secconds =  Math.floor((testTimeInSecconds - (3600 * this.answer.time!.hour)) - (60 * this.answer.time!.minute));
+      this.time.hour = Math.floor(testTimeInSecconds / 3600);
+      this.time.minute = Math.floor((testTimeInSecconds - (this.time.hour * 3600)) / 60);
+      this.time.second =  Math.floor((testTimeInSecconds - (3600 * this.time.hour)) - (60 * this.time.minute));
 
     }, 1000)
   }
 
   getTime () {
 
-    let hour = this.answer.time!.hour <= 9 ? `0${this.answer.time!.hour}` : `${this.answer.time!.hour}`
-    let minute = this.answer.time!.minute <= 9 ? `0${this.answer.time!.minute}` : `${this.answer.time!.minute}`
-    let seccond = this.answer.time!.secconds! <= 9 ? `0${this.answer.time!.secconds!}` : `${this.answer.time!.secconds!}`
+    let hour = this.time.hour <= 9 ? `0${this.time.hour}` : `${this.time.hour}`
+    let minute = this.time.minute <= 9 ? `0${this.time.minute}` : `${this.time.minute}`
+    let seccond = this.time.second! <= 9 ? `0${this.time.second!}` : `${this.time.second!}`
 
     return `${hour}:${minute}:${seccond}`
   }
@@ -119,9 +155,29 @@ export class TestScreenComponent {
     }
   }
 
-  sendTest(){
-    console.log(this.question);
-
+  buildAnswer( ) : string {
+    const lines = this.questionCopy.join("\n").replaceAll(",", " ")
+    return lines;
   }
 
+  sendTest(){
+    this.answer.userAnswer = this.buildAnswer();
+    this.answer.time = this.time.toString();
+    this.answerService.CorrectAnswer(this.answer).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.rebuildTest(res.answer)
+        this.ngOnInit()
+        this.correction = res.locations;
+
+        // this.router.navigate(['test'], {state : {answer: res.answer, test: this.test, location: res.locations}})
+      }
+    })
+  }
+
+  rebuildTest (answer : Answer) {
+    this.answer = answer;
+    this.test.question = answer.userAnswer;
+    this.answer.startDate = new Date();
+  }
 }

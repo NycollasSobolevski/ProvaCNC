@@ -30,6 +30,7 @@ builder.Services.AddTransient<ITestService, TestService>();
 
 builder.Services.AddTransient<AnswerRepository>();
 builder.Services.AddTransient<IService<Answer>, AnswerService>();
+builder.Services.AddTransient<IAnswerService, AnswerService>();
 
 
 builder.Services.AddTransient<IJwtService>( p => 

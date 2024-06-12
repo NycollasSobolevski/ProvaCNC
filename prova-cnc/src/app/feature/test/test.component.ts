@@ -29,12 +29,11 @@ export class TestComponent {
 
   ngOnInit() {
     this.form.controls['code'].setValue("123123")
-    this.toggleSend()
   }
 
   toggleSend () {
     if(!this.form.valid){
-      return 
+      return
     }
 
     const code = this.form.controls['code'].value;
@@ -42,11 +41,11 @@ export class TestComponent {
     this.service.GetTest(code).subscribe({
       next: (res) => {
         console.log(res);
-        
+
         const diag = this.dialog.open(TestDetailComponent)
         diag.componentInstance.test = res
       }
-      
+
     });
   }
 

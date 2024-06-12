@@ -4,7 +4,7 @@ using webapi.Domain.Service;
 
 namespace webapi.Controller;
 public class TestController : BaseController<Test> { 
-    [HttpGet("api/Test/GetTest/{code}")]
+    [HttpGet("[controller]/GetTest/{code}")]
     public async Task<ActionResult> GetTest (
         string code,
         [FromServices] ITestService service

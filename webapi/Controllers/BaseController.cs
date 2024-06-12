@@ -7,10 +7,12 @@ using webapi.Domain.Service;
 
 namespace webapi.Controller;
 [EnableCors("MainPolicy")]
+[ApiController]
+[Route("api/")]
 public class  BaseController<T> : ControllerBase
     where T : TEntity
 {
-    [HttpGet("api/[controller]/{id}")]
+    [HttpGet("[controller]/{id}")]
     public virtual async Task<ActionResult> Get(
         int id,
         [FromServices] IService<T> service
@@ -27,7 +29,7 @@ public class  BaseController<T> : ControllerBase
         }
     }
 
-    [HttpPost("api/[controller]/")]
+    [HttpPost("[controller]/")]
     public virtual  async Task<ActionResult> Post(
         [FromBody] T body,
         [FromServices] IService<T> service

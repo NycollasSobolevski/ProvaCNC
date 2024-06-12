@@ -30,15 +30,13 @@ export class TestDetailComponent {
   })
 
   ngOnInit() {
-    this.toggleStart()
   }
 
   toggleStart () {
-    // if(!this.answerForm.valid) {
-    //   return;
-    //   }
+    if(!this.answerForm.valid) {
+      return;
+      }
 
-    const username = this.answerForm.controls['username'].setValue("nyc")
     const dialog = this.dialog.open(StartTestAlertComponent)
     dialog.componentInstance.answer = this.buildAnswer();
     dialog.componentInstance.test = this.test;
@@ -51,12 +49,9 @@ export class TestDetailComponent {
       id: 0,
       attempts: 1,
       idTest: this.test.id,
-      is_activated: true,
+      isActive: true,
       student: username,
-      time: {
-        hour:0,
-        minute:0,
-      },
+      time: "00:00:00",
       userAnswer: ""
     };
 

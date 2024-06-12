@@ -1,5 +1,7 @@
 $incorrect-input : #f79292;
 $altered-input : #92e8f7;
+$correct-input : #92f797;
+$missplaced-input : #f7e892;
 
 
 main {
@@ -48,7 +50,13 @@ main {
       }
       .altered {
         background-color: $altered-input;
-        }
+      }
+      .correct {
+        background-color: $correct-input;
+      }
+      .missPlaced {
+        background-color: $missplaced-input;
+      }
       .incorrect {
         background-color: $incorrect-input;
 
