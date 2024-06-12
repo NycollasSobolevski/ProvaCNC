@@ -5,7 +5,16 @@
     <h3>{{answer.student}}</h3>
     <div class="btn-area">
       <h4>Tentativas: {{answer.attempts}} / {{test.attempts}}</h4>
-      <app-button label="Entregar" (click)="toggleSend()"/>
+      <app-button
+        [disabled]="this.answer.attempts! > this.test.attempts!"
+        label="Entregar"
+        (click)="toggleSend()"/>
+      @if (this.answer.attempts! > this.test.attempts!) {
+        <app-button
+          variant="secondary"
+          label="Início"
+          (click)="toggleHome()"/>
+      }
     </div>
   </div>
 
@@ -34,3 +43,5 @@
     }
   </div>
 </main>
+
+<app-help-modal />

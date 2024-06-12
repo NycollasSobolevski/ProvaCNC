@@ -1,0 +1,67 @@
+@import "../../../../theme/bosch-color-theme.scss" ;
+
+$incorrect-input : #f79292;
+$altered-input : #92e8f7;
+$correct-input : #92f797;
+$missplaced-input : #f7e892;
+
+.help-btn {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 2rem ;
+  right: 2rem;
+  background-color: $Bosch-Gray-50;
+}
+
+
+.modal {
+  position: fixed;
+  place-self: center;
+  top: 0;left: 0;bottom: 0;right: 0;
+  margin: auto;
+  box-shadow: 0 0 15px  rgba(0, 0, 0, 0.603);
+
+  .question-help {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+
+    .input-question {
+      width: 4rem;
+      height: 2rem;
+      margin: .5rem;
+      border-radius: 5px;
+      box-shadow: 0 0 5px black;
+    }
+    .incorrect {
+      background-color: $incorrect-input;
+    }
+    .correct {
+      background-color: $correct-input;
+    }
+    .altered {
+      background-color: $altered-input;
+    }
+    .missplaced {
+      background-color: $missplaced-input;
+    }
+  }
+
+}
+.bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.377);
+  backdrop-filter: blur(1px);
+}

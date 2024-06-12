@@ -1,0 +1,34 @@
+<div class="help-btn" (click)="toggleOpen()">
+  <mat-icon>question_mark</mat-icon>
+</div>
+
+@if (open) {
+  <div class="bg"  (click)="toggleOpen()"></div>
+
+  <div class="modal">
+    <h1>Ajuda</h1>
+
+    <div class="content">
+      <div class="error-colors">
+        <div class="question-help">
+          <div class="input-question correct"></div>
+          <h3>Resposta Correta</h3>
+        </div>
+        <div class="question-help">
+          <div class="input-question incorrect"></div>
+          <h3>Resposta Incorreta</h3>
+        </div>
+        <div class="question-help">
+          <div class="input-question missplaced"></div>
+          <h3>Acertou o lugar mas errou a resposta</h3>
+        </div>
+        <div class="question-help">
+          <div class="input-question altered"></div>
+          <h3>Comando modificado</h3>
+        </div>
+      </div>
+    </div>
+
+    <app-button variant="integrated" label="Fechar" (click)="toggleOpen()"/>
+  </div>
+}

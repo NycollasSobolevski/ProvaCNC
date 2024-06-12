@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import TimeOnly from '@domain/_utils/timeonly.type';
 import Answer from '@domain/answer/answer.model';
 import AnswerService from '@domain/answer/answer.service';
-import { AnswerCorrectionEnum, CorrectionLocation } from '@domain/answer/answerCorrection.model';
+import { AnswerCorrection, AnswerCorrectionEnum, CorrectionLocation } from '@domain/answer/answerCorrection.model';
 import Test from '@domain/test/test.model';
 import { ButtonComponent } from '@shared/button/button.component';
 import { HeaderComponent } from '@shared/header/header.component';
 import { FinishTestPopupComponent } from './finish-test-popup/finish-test-popup.component';
+import { HelpModalComponent } from './help-modal/help-modal.component';
 
 @Component({
   selector: 'app-test-screen',
@@ -17,7 +18,8 @@ import { FinishTestPopupComponent } from './finish-test-popup/finish-test-popup.
   imports: [
     HeaderComponent,
     ButtonComponent,
-    FormsModule
+    FormsModule,
+    HelpModalComponent
   ],
   templateUrl: './test-screen.component.html',
   styleUrl: './test-screen.component.scss'
@@ -35,6 +37,8 @@ export class TestScreenComponent {
     this.startTime();
   }
 
+  finished = false;
+
   test!: Test;
   answer! : Answer;
 
@@ -48,13 +52,22 @@ export class TestScreenComponent {
 
 
   ngOnInit(){
-    this.question = this.splitLines()
+    const storage = sessionStorage.getItem('lastTest')
+    if(storage){
+      const test = JSON.parse(storage) as AnswerCorrection
+      this.rebuildTest(test)
+      this.question = test.answer.userAnswer!.split('\n').map(item => item.split(" ") );
+    }
+    else {
+      this.question = this.test.question!.split('\n').map(item => item.split(" ") );
+    }
+
     this.questionCopy = JSON.parse(JSON.stringify(this.question))
+    this.finished = this.test.attempts! > this.answer.attempts!
   }
 
-  splitLines () : string[][] {
-    const test = this.test.question!.split('\n').map(item => item.split(" ") );
-    return test;
+  ngOnDestroy () {
+    sessionStorage.clear()
   }
 
   getIndex (item :any, array:any[], more : number = 0) : number {
@@ -116,6 +129,10 @@ export class TestScreenComponent {
 
   startTime() {
     this.interval = setInterval(() => {
+      if(this.answer.attempts! > this.test.attempts!) {
+        return;
+      }
+
       const currentDate = new Date();
 
       //* formula para pegar hora(H), minuto(M) e segundo(S)
@@ -165,7 +182,7 @@ export class TestScreenComponent {
   toggleSend() {
     const dialog = this.dialog.open(FinishTestPopupComponent)
     dialog.componentInstance.title = "Tem certeza?"
-    if(this.test.attempts! > this.answer.attempts!) {
+    if(this.finished) {
       dialog.componentInstance.description =
         `Você tem certeza que deseja encerrar esta tentativa? \nApós esta tentativa lhe restará mais ${this.test.attempts! - this.answer.attempts!} tentativa(s)`
         }
@@ -187,20 +204,23 @@ export class TestScreenComponent {
     this.answer.time = this.time.toString();
     this.answerService.CorrectAnswer(this.answer).subscribe({
       next: (res) => {
-        console.log(res);
-        this.rebuildTest(res.answer)
-        this.ngOnInit()
-        this.correction = res.locations;
+        this.rebuildTest(res)
+        // this.ngOnInit()
 
         // this.router.navigate(['test'], {state : {answer: res.answer, test: this.test, location: res.locations}})
+        sessionStorage.setItem('lastTest', JSON.stringify(res))
       }
     })
   }
 
+  toggleHome () {
+    this.router.navigate([""])
+  }
 
-  rebuildTest (answer : Answer) {
-    this.answer = answer;
-    this.test.question = answer.userAnswer;
+  rebuildTest (answer : AnswerCorrection) {
+    this.answer = answer.answer;
+    // this.test.question = answer.answer.userAnswer;
+    this.correction = answer.locations;
     this.answer.startDate = new Date();
   }
 }
