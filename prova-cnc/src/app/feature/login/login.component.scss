@@ -1,0 +1,18 @@
+main {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal{
+    width: 30rem;
+    height: 25rem;
+    gap: 2rem;
+    box-shadow: 0 0 20px black;
+
+    h3 {
+      font-family: 'bosch-black';
+    }
+  }
+}
