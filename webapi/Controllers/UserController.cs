@@ -32,7 +32,7 @@ public class UserController : ControllerBase
     [HttpPost("api/[controller]/auth/login")]
     public async Task<ActionResult> Login (
         [FromServices] IUserService service,
-        [FromBody] User body
+        [FromBody] LoginBody body
     )
     {
         try

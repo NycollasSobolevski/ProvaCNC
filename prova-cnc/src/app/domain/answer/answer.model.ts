@@ -7,9 +7,8 @@ export default class Answer extends Tentity {
     student?: string;
     userAnswer?: string;
     attempts?: number;
-    time?: TimeOnly;
+    time?: TimeOnly | string;
     startDate?: Date;
-    endDate?: Date;
     idTest?: number;
     idTestNavigation?: Test;
 }

@@ -2,12 +2,13 @@
     padding: 7rem;
     gap: 3rem;
     input {
-        width: 30vw;
+      width: 30vw;
     }
 
     .btn-area {
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
 
