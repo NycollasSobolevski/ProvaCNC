@@ -10,12 +10,20 @@
     }
 
     @case('user') {
-      <span>
+      <span (click)="navigate('home')">
         <img src="../../../assets/Bosch_symbol_logo_black_red.svg" alt="bosch-logo" width="200">
       </span>
-      <span>
-        <h3>{{username}}</h3>
+      <span class="user-menu-button" (click)="toggleUserMenu()">
+        @if(username) {
+          <h3>Hi, {{username}}</h3>
+          <mat-icon>arrow_drop_down</mat-icon>
+
+          <div [classList]="'user-menu-container ' + getMenuClass()">
+            <app-button label="Logout" variant="tertiary" (click)="logoff()"/>
+          </div>
+        }
       </span>
+
     }
 
     @case('test') {

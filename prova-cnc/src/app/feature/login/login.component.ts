@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AlertComponent } from '@shared/alert/alert.component';
 import AlertService from '@shared/alert/_utils/alert.service';
 import AlertType from '@shared/alert/_utils/AlertType.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ import AlertType from '@shared/alert/_utils/AlertType.enum';
 export class LoginComponent {
   constructor(
     private service : UserService,
-    protected alertService : AlertService
+    protected alertService : AlertService,
+    private router : Router
   ){}
 
   loginForm : FormGroup = new FormGroup({
@@ -48,6 +50,7 @@ export class LoginComponent {
     this.service.login(body).subscribe({
       next: (res) => {
         sessionStorage.setItem('token', res.value);
+        this.router.navigate(['home'])
       },
       error: (err : HttpErrorResponse) => {
         console.log(err.error);

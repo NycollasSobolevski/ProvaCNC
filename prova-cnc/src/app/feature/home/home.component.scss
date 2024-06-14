@@ -1,0 +1,41 @@
+@import "./theme.scss";
+
+main {
+  height: calc(100vh - 4.5rem);
+  .content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-image: url("../../../assets/building-silhouette-nature-clouds-dark.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .card {
+      width: 25%;
+      min-height: 15rem;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px black;
+      text-align: center;
+      background-color: #5857573b;
+      backdrop-filter: blur(.5px );
+
+      h2{
+        color: $card-color;
+      }
+
+      &:hover {
+        background-color: #7a79793b;
+        backdrop-filter: blur(5px);
+        transform: scale(1.025);
+        transition: all .25s ;
+      }
+    }
+  }
+}

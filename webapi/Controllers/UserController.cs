@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using webapi.Domain.Model;
 using webapi.Domain.Service;
@@ -59,12 +60,6 @@ public class UserController : ControllerBase
     ){
         try
         {
-
-            User body = new(){
-                Id = 2,
-                Password = "admin"
-            };
-            await service.UpdatePassword(body);
             return Ok();
         }
         catch (System.Exception e)
@@ -73,5 +68,21 @@ public class UserController : ControllerBase
             return BadRequest();            
         }
     }
-
+    [HttpPost("api/[controller]/auth/updatePassword")]
+    public async Task<ActionResult> UpdatePassword(
+        [FromServices] IUserService service,
+        [FromBody] User user
+    ){
+        try
+        {
+            string token = Request.Headers.Authorization;
+            await service.UpdatePassword(user, token);
+            return Ok();
+        }
+        catch (System.Exception e)
+        {
+            System.Console.WriteLine(e);
+            return BadRequest();
+        }
+    }
 }
