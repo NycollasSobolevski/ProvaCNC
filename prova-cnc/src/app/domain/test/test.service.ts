@@ -22,6 +22,10 @@ class TestService extends BaseService<Test> {
     GetNewCode () {
       return this.client.get<string>(`${this.fullEndPoint}/GetNewCode`).pipe();
     }
+
+    getAllTestData(id: number){
+      return this.client.get<Test>(`${this.fullEndPoint}/GetAllData/${id}`, {headers:this.getHeaders()})
+    }
 }
 
 export default TestService;

@@ -1,0 +1,41 @@
+<app-header variant="user" />
+
+<main>
+  <div class="top">
+    <h2>{{test?.title}}</h2>
+    <span>
+      <h3>Código: {{test?.code}}</h3>
+      <h3>Tentativas: {{test?.attempts}}</h3>
+    </span>
+  </div>
+  <div class="description-container">
+    <h4>Descrição:</h4>
+    <p>{{test?.description}}</p>
+  </div>
+
+
+
+
+@if (state == 'answer') {}
+
+<div class="code">
+  @for (x of data; track $index) {
+    <div class="code-line">
+      <p>{{getIndex(x, data) + 1}}</p>
+      @for (y of x; track $index) {
+        <div class="cell">
+
+          <input type="text"
+            [className]="getStyleClass( getIndex(x, data), getIndex(y, x) )"
+            disabled value="{{y}}"
+          >
+          <div class="answer">
+            <h4>{{template[getIndex(x,data)][getIndex(y,x)]}}</h4>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+<br>
+</main>

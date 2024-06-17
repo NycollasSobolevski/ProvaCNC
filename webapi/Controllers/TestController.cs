@@ -44,4 +44,28 @@ public class TestController : BaseController<Test> {
             return BadRequest();
         }
     }
+
+    [HttpGet("[controller]/GetAllData/{id}")]
+    public async Task<ActionResult> GetWithAnswer (
+        [FromServices] ITestService service,
+        int id
+    ){
+        try
+        {
+            string token = Request.Headers.Authorization;
+            var res = await service.GetAllData(id, token);
+            return Ok(res);
+        }
+        catch(UnauthorizedAccessException e) {
+            return Unauthorized(e);
+        }
+        catch(KeyNotFoundException e) {
+            return NotFound(e);
+        }
+        catch (System.Exception e)
+        {
+            System.Console.WriteLine(e);
+            return BadRequest();            
+        }
+    }
 }

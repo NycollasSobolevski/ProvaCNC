@@ -45,4 +45,22 @@ public class  BaseController<T> : ControllerBase
             return BadRequest();
         }
     }
+
+    [HttpGet("[controller]/{page}&{limit}")]
+    public virtual async Task<ActionResult> GetAll(
+        [FromServices] IService<T> service,
+        int page = 0, 
+        int limit = 10
+    ){
+        try
+        {
+            var res = await service.GetAllAsync(page, limit);
+            return Ok(res);
+        }
+        catch (System.Exception e)
+        {
+            System.Console.WriteLine(e);
+            throw;
+        }
+    }
 }
