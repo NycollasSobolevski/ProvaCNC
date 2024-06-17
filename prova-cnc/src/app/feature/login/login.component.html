@@ -3,8 +3,11 @@
 <main>
   <form class="modal" [formGroup]="loginForm" >
     <h3>LOGIN</h3>
-    <input type="text" placeholder="Login" formControlName="login" >
-    <input type="password" placeholder="Senha" formControlName="password" >
+    <div class="input-container">
+
+      <input type="text" placeholder="Login" formControlName="login" >
+      <input type="password" placeholder="Senha" formControlName="password" >
+    </div>
     <app-button label="LOGIN" (click)="login()" />
   </form>
 </main>

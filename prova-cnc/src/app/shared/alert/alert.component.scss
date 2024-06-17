@@ -1,0 +1,50 @@
+@import "./_utils/theme.scss";
+
+.alert-container {
+  width: 100%;
+  // height: 3rem ;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px black;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  p {
+    font-family: 'bosch-black';
+  }
+}
+
+.Info {
+  background-color: $info-background-color;
+  p{
+    color: $info-content-color;
+
+  }
+}
+.Danger {
+  background-color: $danger-background-color;
+  p{
+    color: $danger-content-color;
+  }
+}
+.Warning {
+  background-color: $warning-background-color;
+  p{
+    color: $warning-content-color;
+  }
+}
+.Success {
+  background-color: $success-background-color;
+  p{
+    color: $success-content-color;
+
+  }
+}
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+::ng-deep .mdc-snackbar__label{
+  padding: 0 !important;
+}

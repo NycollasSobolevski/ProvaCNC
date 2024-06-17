@@ -1,0 +1,32 @@
+<app-header variant="user"/>
+
+
+<main>
+  <h2>Nova Prova</h2>
+
+  <form [formGroup]="newTestForm">
+    <div class="top">
+      <span>
+        <input id="code-input" type="text" placeholder="Código" formControlName="code">
+        <app-button label="Enviar" (click)="send()" />
+      </span>
+      <span>
+        <input id="title-input" type="text" placeholder="Titulo" formControlName="title">
+        <input id="attempts-input" type="number" placeholder="Tentativas" formControlName="attempts">
+      </span>
+      <textarea name="" id="description-input" placeholder="Descrição" formControlName="description"></textarea>
+    </div>
+
+    <div class="test-area">
+      <span>
+        <label for="">Questão:</label>
+        <textarea name="test-question" id="test-question" formControlName="question"></textarea>
+      </span>
+      <span>
+        <label for="">Resposta Correta:</label>
+        <textarea name="test-answer" id="test-answer" formControlName="answer"></textarea>
+      </span>
+    </div>
+  </form>
+
+</main>
