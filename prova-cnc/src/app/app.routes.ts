@@ -6,6 +6,8 @@ import { HomeComponent } from './feature/home/home.component';
 import { AuthGuard } from '@shared/utils/guard/auth.guard';
 import { AllTestsComponent } from './feature/all-tests/all-tests.component';
 import { NewTestComponent } from './feature/new-test/new-test.component';
+import { TestDetailsComponent } from './feature/all-tests/test-details/test-details.component';
+import { AnswerDetailsComponent } from './feature/all-tests/test-details/answer-details/answer-details.component';
 
 export const routes: Routes = [
     {path: "login", component: LoginComponent, title: "Prova CNC - Login"},
@@ -14,5 +16,7 @@ export const routes: Routes = [
     {path: "home", component: HomeComponent, title: "Prova CNC - Home", canMatch:[AuthGuard]},
     {path: "allTests", component: AllTestsComponent, title: "Prova CNC - Todas", canMatch:[AuthGuard]},
     {path: "newTest", component: NewTestComponent, title: "Prova CNC - Novo", canMatch:[AuthGuard]},
+    {path: "testDetails/:id", component: TestDetailsComponent, title: "Prova CNC - Detalhes", canMatch:[AuthGuard]},
+    {path: "testAnswer", component: AnswerDetailsComponent, title: "Prova CNC - Correção", canMatch:[AuthGuard]},
     {path: "**", component: TestComponent, title: "Prova CNC"},
 ];

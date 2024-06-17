@@ -1,0 +1,30 @@
+<app-header [variant]="'user'"/>
+
+<main>
+  <h2>{{data.title}}</h2>
+  <p>{{data.code}}</p>
+
+  <div class="test-template" (click)="redirectToTemplate(data)">
+    <h3>Gabarito:</h3>
+  </div>
+
+  <h2>Provas</h2>
+  <!-- <app-table [data]="data" /> -->
+  <main>
+    <table>
+      <tr>
+        <th>Aluno</th>
+        <th>Tentativas</th>
+        <th>Tempo</th>
+      </tr>
+
+      @for (item of data.answers; track $index) {
+        <tr (click)="redirectToAnswer(item)">
+          <td>{{item.student}}</td>
+          <td>{{item.attempts}}</td>
+          <td>{{item.time}}</td>
+        </tr>
+      }
+    </table>
+  </main>
+</main>

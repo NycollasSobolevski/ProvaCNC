@@ -1,0 +1,19 @@
+@import "../../../../theme/table.theme.scss";
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,td {
+    height: 3rem ;
+    text-align: center;
+  }
+  tr {
+    border-bottom: 1px solid $line-color;
+
+    &:not(:nth-child(1)):hover {
+      background-color: $line-hover-background;
+      cursor: pointer;
+    }
+  }
+}
