@@ -15,4 +15,5 @@ export type CorrectionLocation = {
 export class AnswerCorrection {
   answer! : Answer
   locations? : CorrectionLocation[]
+  finished?: boolean
 }
