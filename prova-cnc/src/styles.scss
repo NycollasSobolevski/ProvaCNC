@@ -36,7 +36,8 @@ body {
     }
 }
 
-input {
+input, textarea {
+    background-color: $Bosch-White;
     padding: .5rem 1rem;
     color: black;
     border-radius: 5px;
@@ -64,6 +65,20 @@ input {
   background-color: greenyellow;
 }
 
+.input-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $Bosch-White;
+  border-radius: 5px;
+
+  label {
+    position: relative;
+    top: 0%;
+    color: black;
+    margin-left: .5rem;
+    font-family: 'bosch-light';
+  }
+}
 
 .modal {
     display: flex;

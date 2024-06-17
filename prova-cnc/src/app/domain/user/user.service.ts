@@ -10,8 +10,8 @@ import JwtPayload from './jwtPayload.model';
 @Injectable({
   providedIn: 'root'
 })
-export default class UserService extends BaseService  {
-  constructor( private client : HttpClient ){ super('User') }
+export default class UserService extends BaseService<User> {
+  constructor( client : HttpClient ){ super('User', client) }
 
   login (body: LoginBody) {
     return this.client.post<Jwt>(`${this.fullEndPoint}/auth/login`, body).pipe();
