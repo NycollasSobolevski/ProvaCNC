@@ -48,8 +48,8 @@ public class BaseService<T> : IService<T>
 
         var db = this.repository
             .GetAllNoTracking()
-            .Where( t => t.IsActive );
-        
+            .Where(e => e.IsActive);
+
         if(limit == 0){
             res = new(){
                 Items = await db.ToListAsync(),
@@ -57,15 +57,17 @@ public class BaseService<T> : IService<T>
             return res;
         }
 
-        var items = db
+        var items = await db
             .Skip(page * limit)
-            .Take( limit + 1 );
+            .Take( limit + 1 )
+            .ToListAsync();
+
 
         res = new(){
-            Items = await items.ToListAsync(),
+            Items = items,
             Count = db.Count(),
-            Next = items.Count() > limit,
-            Pages = db.Count() / limit 
+            Next = items.Count > limit,
+            Pages = (int)Math.Ceiling((decimal)db.Count() / limit)
         };
 
         return res;
@@ -96,4 +98,6 @@ public class BaseService<T> : IService<T>
 
         return entity;
     }
+
+
 }

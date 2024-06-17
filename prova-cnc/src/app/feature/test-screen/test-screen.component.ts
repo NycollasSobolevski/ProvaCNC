@@ -63,7 +63,7 @@ export class TestScreenComponent {
     }
 
     this.questionCopy = JSON.parse(JSON.stringify(this.question))
-    this.finished = this.test.attempts! > this.answer.attempts!
+    this.finished = this.test.attempts! < this.answer.attempts!
   }
 
   ngOnDestroy () {
@@ -205,9 +205,9 @@ export class TestScreenComponent {
     this.answerService.CorrectAnswer(this.answer).subscribe({
       next: (res) => {
         this.rebuildTest(res)
-        // this.ngOnInit()
+        this.finished = res.finished!;
+        console.log(res);
 
-        // this.router.navigate(['test'], {state : {answer: res.answer, test: this.test, location: res.locations}})
         sessionStorage.setItem('lastTest', JSON.stringify(res))
       }
     })

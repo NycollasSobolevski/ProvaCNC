@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>Código</th>
+    <th>Titulo</th>
+    <th>Quantidade</th>
+  </tr>
+
+  @for (item of data.items; track $index) {
+    <tr (click)="toggleTest(item)">
+      <td>{{item.code}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.answers?.length}}</td>
+    </tr>
+  }
+</table>

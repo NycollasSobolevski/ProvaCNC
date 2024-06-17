@@ -1,17 +1,37 @@
 main {
   width: 100%;
-  height: 90%;
+  height: 92%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-image: url("../../../assets/building-silhouette-nature-clouds-dark.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   .modal{
     width: 30rem;
     height: 25rem;
     gap: 2rem;
     box-shadow: 0 0 20px black;
+    background-color: rgba(0, 0, 0, 0.178);
+    backdrop-filter: blur(2px);
+    .input-box  {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+
+      input {
+        width: 60%;
+      }
+    }
 
     h3 {
+      color: white;
       font-family: 'bosch-black';
     }
   }

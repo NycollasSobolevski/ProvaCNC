@@ -4,12 +4,12 @@
   <div class="top">
     <h3>{{answer.student}}</h3>
     <div class="btn-area">
-      <h4>Tentativas: {{answer.attempts}} / {{test.attempts}}</h4>
+      <h4>Tentativas: {{answer.attempts!}} / {{test.attempts}}</h4>
       <app-button
-        [disabled]="this.answer.attempts! > this.test.attempts!"
+        [disabled]="finished"
         label="Entregar"
         (click)="toggleSend()"/>
-      @if (this.answer.attempts! > this.test.attempts!) {
+      @if (finished) {
         <app-button
           variant="secondary"
           label="Início"
