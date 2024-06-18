@@ -13,8 +13,6 @@ class TestService extends BaseService<Test> {
       super('Test', client)
     }
 
-    endpoint = `${environment.apiUrl}/api/Test`;
-
     GetTest (code : string) {
       return this.client.get<Test>(`${this.fullEndPoint}/GetTest/${code}`).pipe();
     }
