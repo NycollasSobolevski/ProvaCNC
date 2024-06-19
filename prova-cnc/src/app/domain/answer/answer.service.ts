@@ -14,14 +14,12 @@ class AnswerService extends BaseService<Answer> {
       super('Answer', client)
     }
 
-    endpoint = `${environment.apiUrl}/api/Answer`;
-
     PostAnswer (answer : Answer) {
-      return this.client.post<Answer>(`${this.endpoint}/`, answer).pipe()
+      return this.client.post<Answer>(`${this.fullEndPoint}/`, answer).pipe()
     }
 
     CorrectAnswer (answer : Answer) {
-      return this.client.post<AnswerCorrection>(`${this.endpoint}/CorrectTest`, answer).pipe()
+      return this.client.post<AnswerCorrection>(`${this.fullEndPoint}/CorrectTest`, answer).pipe()
     }
 
 

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { environment } from "src/environments/environment";
 import GetAllReturn from "./_utils/getAll.model";
+import { environment } from "../app.config";
 
 export default class BaseService<T> {
   protected readonly endPoint : string = `${environment.apiUrl}/api`;
