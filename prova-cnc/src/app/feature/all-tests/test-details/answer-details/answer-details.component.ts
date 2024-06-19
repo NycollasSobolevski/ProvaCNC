@@ -5,6 +5,7 @@ import Test from '@domain/test/test.model';
 import { LocationStrategy } from '@angular/common';
 import { HeaderComponent } from '@shared/header/header.component';
 import TestService from '@domain/test/test.service';
+import { Avaliation } from '@domain/test/TestOverview.mode';
 
 type State = 'test' | 'answer' | ''
 
@@ -32,6 +33,7 @@ export class AnswerDetailsComponent {
 
   test?: Test;
   answer?: Answer;
+  avaliations?: Avaliation[];
 
   ngOnInit() {
     this.readData()
@@ -42,15 +44,13 @@ export class AnswerDetailsComponent {
     console.log(state);
 
     if(state.test) {
-      console.log('is a test');
-
       this.test = state.test;
+      this.avaliations = state.avaliations;
       this.state = 'test'
       this.getTestContent();
       return
     }
     if(state.answer) {
-      console.log('is a answer');
       this.answer = state.answer;
       this.state = 'answer'
       this.getAnswerContent();
@@ -82,7 +82,7 @@ export class AnswerDetailsComponent {
     this.data = content;
     this.service.getAllTestData(this.answer?.idTest!).subscribe({
       next: (res) => {
-        this.test = res;
+        this.test = res.test;
         this.getTemplateContent();
        this.getQuestionContent();
     }

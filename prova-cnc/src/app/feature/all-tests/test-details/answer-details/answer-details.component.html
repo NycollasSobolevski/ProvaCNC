@@ -21,18 +21,36 @@
 <div class="code">
   @for (x of data; track $index) {
     <div class="code-line">
-      <p>{{getIndex(x, data) + 1}}</p>
-      @for (y of x; track $index) {
-        <div class="cell">
-
-          <input type="text"
+      <div class="answer-content">
+        <p>{{getIndex(x, data) + 1}}</p>
+        @for (y of x; track $index) {
+          <div class="cell">
+            <input type="text"
             [className]="getStyleClass( getIndex(x, data), getIndex(y, x) )"
             disabled value="{{y}}"
-          >
-          <div class="answer">
-            <h4>{{template[getIndex(x,data)][getIndex(y,x)]}}</h4>
+            >
+            <div class="answer">
+              <h4>{{template[getIndex(x,data)][getIndex(y,x)]}}</h4>
+            </div>
           </div>
+        }
+      </div>
+      @if(state == 'test')
+      {
+        <div class="overview-content">
+          <p [className]="avaliations![getIndex(x, data)].corrects > 0 ? 'statistic-correct' : '' " >
+            {{avaliations![ getIndex(x, data) ].corrects}}
+          </p>
+          <p [className]="avaliations![getIndex(x, data)].incorrects > 0 ? 'statistic-incorrect' : '' " >
+            {{avaliations![ getIndex(x, data) ].incorrects}}
+          </p>
+          <p [className]="avaliations![getIndex(x, data)].missPlaceds > 0 ? 'statistic-missplaced' : '' " >
+            {{avaliations![ getIndex(x, data) ].missPlaceds}}
+          </p>
         </div>
+      }
+      @else {
+        <span></span>
       }
     </div>
   }

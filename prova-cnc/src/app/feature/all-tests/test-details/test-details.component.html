@@ -1,10 +1,10 @@
 <app-header [variant]="'user'"/>
 
 <main>
-  <h2>{{data.title}}</h2>
-  <p>{{data.code}}</p>
+  <h2>{{data.test.title}}</h2>
+  <p>{{data.test.code}}</p>
 
-  <div class="test-template" (click)="redirectToTemplate(data)">
+  <div class="test-template" (click)="redirectToTemplate(data.test)">
     <h3>Gabarito:</h3>
   </div>
 
@@ -18,7 +18,7 @@
         <th>Tempo</th>
       </tr>
 
-      @for (item of data.answers; track $index) {
+      @for (item of data.test.answers; track $index) {
         <tr (click)="redirectToAnswer(item)">
           <td>{{item.student}}</td>
           <td>{{item.attempts}}</td>

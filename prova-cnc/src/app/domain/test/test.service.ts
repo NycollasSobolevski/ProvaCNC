@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import Test from "./test.model";
 import BaseService from "@domain/Base.Service";
+import { TestOverview } from "./TestOverview.mode";
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +23,7 @@ class TestService extends BaseService<Test> {
     }
 
     getAllTestData(id: number){
-      return this.client.get<Test>(`${this.fullEndPoint}/GetAllData/${id}`, {headers:this.getHeaders()})
+      return this.client.get<TestOverview>(`${this.fullEndPoint}/GetAllData/${id}`, {headers:this.getHeaders()})
     }
 }
 

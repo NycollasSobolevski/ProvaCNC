@@ -1,3 +1,5 @@
+@import "../../../../../theme/bosch-color-theme.scss";
+
 main{
   text-align: center;
 
@@ -29,18 +31,34 @@ main{
       padding: .5rem;
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.322);
+      .answer-content{
+        display: flex;
+
+      }
+      .overview-content {
+        display: flex;
+
+        p{
+          width: 3rem;
+          height: 100%;
+        }
+      }
 
       .cell {
         margin-left: .5rem;
         .answer {
-          position: static;
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
           width: 0;
           height: 0;
+          z-index: 2;
           overflow: hidden;
+          border-radius: 5px;
+          background-color: $Bosch-Green-50;
 
           &:hover {
             width: 100%;
@@ -71,6 +89,7 @@ main{
   }
 
   input {
+    z-index: 1;
     text-align: center;
     width: 5rem;
   }
@@ -79,9 +98,25 @@ main{
 
 
 .incorrect {
-  background-color: rgb(228, 121, 118) !important;
+  // background-color: rgb(228, 121, 118) !important;
+  background-color: rgb(110, 50, 50) !important;
 }
 
 .correct {
-  background-color: rgb(127, 228, 118) !important;
+  // background-color: rgb(127, 228, 118) !important;
+  background-color: rgb(57, 110, 50) !important;
+}
+
+.missplaced {
+  background-color: rgb(110, 99, 50) !important;
+}
+
+.statistic-correct {
+  color: #aaffb1;
+}
+.statistic-incorrect {
+  color: #ffaaaa;
+}
+.statistic-missplaced {
+  color: #f2ffaa;
 }

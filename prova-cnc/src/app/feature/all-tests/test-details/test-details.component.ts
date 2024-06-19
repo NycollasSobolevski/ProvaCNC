@@ -5,6 +5,7 @@ import { HeaderComponent } from '@shared/header/header.component';
 import TestService from '@domain/test/test.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Answer from '@domain/answer/answer.model';
+import { TestOverview } from '@domain/test/TestOverview.mode';
 
 @Component({
   selector: 'app-test-details',
@@ -22,7 +23,7 @@ export class TestDetailsComponent {
     private router  : Router
   ){}
 
-  data!: Test;
+  data!: TestOverview;
 
   ngOnInit(){
     this.loadData();
@@ -36,7 +37,11 @@ export class TestDetailsComponent {
     })
 
     this.service.getAllTestData(id).subscribe({
-      next:(res) => {this.data = res}
+      next:(res) => {
+        this.data = res
+        console.log(this.data);
+
+      }
     })
   }
 
@@ -44,7 +49,7 @@ export class TestDetailsComponent {
     this.router.navigate(['testAnswer'], {state : {answer : answer}})
   }
   redirectToTemplate( test: Test){
-    this.router.navigate(['testAnswer'], {state : {test : test}})
+    this.router.navigate(['testAnswer'], {state : {test : test, avaliations: this.data.results}})
 
   }
 }
