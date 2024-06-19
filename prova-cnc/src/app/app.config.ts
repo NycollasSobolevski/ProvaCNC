@@ -15,7 +15,7 @@ export const environment = isDevMode() ? dev : prod;
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), 
+    provideRouter(routes),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule)
   ]
