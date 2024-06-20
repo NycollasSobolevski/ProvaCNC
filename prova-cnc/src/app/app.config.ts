@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {environment as dev} from "src/environments/environment.development"
 import {environment as prod} from "src/environments/environment"
 
-// enableProdMode();
+enableProdMode();
 console.log(isDevMode());
 
 export const environment = isDevMode() ? dev : prod;
