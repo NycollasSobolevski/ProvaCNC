@@ -39,6 +39,9 @@ public class  BaseController<T> : ControllerBase
             var res = await service.CreateAsync(body);
             return Ok(res);
         }
+        catch(UnauthorizedAccessException e) {
+            return Unauthorized(e.Message);
+        }
         catch (System.Exception e)
         {
             System.Console.WriteLine(e);

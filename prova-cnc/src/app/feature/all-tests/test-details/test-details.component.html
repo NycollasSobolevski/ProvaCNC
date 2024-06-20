@@ -16,6 +16,7 @@
         <th>Aluno</th>
         <th>Tentativas</th>
         <th>Tempo</th>
+        <th>Acertos</th>
       </tr>
 
       @for (item of data.test.answers; track $index) {
@@ -23,6 +24,7 @@
           <td>{{item.student}}</td>
           <td>{{item.attempts}}</td>
           <td>{{item.time}}</td>
+          <td>{{item.grade}} / {{data.test.errors}}</td>
         </tr>
       }
     </table>

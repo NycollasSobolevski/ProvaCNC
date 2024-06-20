@@ -11,4 +11,5 @@ export default class Answer extends Tentity {
     startDate?: Date;
     idTest?: number;
     idTestNavigation?: Test;
+    grade?: number;
 }

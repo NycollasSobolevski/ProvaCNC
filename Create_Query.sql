@@ -33,6 +33,7 @@ CREATE TABLE [answers] (
     [answer] VARCHAR(MAX) not null,
     [attempts] int not null,
     [time] TIME not null,
+    [grade] int,
     [id_test] int not null FOREIGN KEY REFERENCES test(id),
     [is_active] bit not null,
 )

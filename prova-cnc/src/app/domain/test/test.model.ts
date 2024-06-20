@@ -10,5 +10,5 @@ export default class Test extends Tentity
     question?: string
     answer?: string
     answers?: Answer[] = []
-
+    errors?: number
 }
